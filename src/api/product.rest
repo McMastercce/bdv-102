@@ -1,0 +1,35 @@
+### Get Product
+GET http://localhost:3000/products/1
+
+### Get Products
+GET http://localhost:3000/products
+
+### Create Product
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Product 1",
+    "product_id": 21,
+    "product_type_id": 1,
+    "name": "IPhone 14",
+    "description": "IPhone 14",
+    "price": "1400",
+    "sku": "SKU-100"
+}
+
+### Update Product
+PUT http://localhost:3000/products/21
+Content-Type: application/json
+    
+{
+    "name": "Product 1",
+    "product_type_id": 1,
+    "name": "IPhone 14",
+    "description": "IPhone 14",
+    "price": "1500",
+    "sku": "SKU-100"
+}
+
+### Delete Product
+DELETE http://localhost:3000/products/21

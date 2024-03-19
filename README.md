@@ -1,64 +1,82 @@
-# BDV 102: Interactivity and Databases
-This is a code repository in the course BVD 102 at McMaster Continuing Education.
+# Module 7: Web API Development for Online Store
 
-## Essential Tools Setup
+In this module, we will continue the backend development using JavaScript and SQL for our hypothetical online store with the Schema as introduced in module 6. 
 
-To embark on this educational journey, you’ll need to set up an online SQL database environment and install some fundamental software that will be the backbone of your learning experience.
+![E-store ERD](./assets/e-store-erd.svg)
 
-### Online SQL Database Setup with Neon
+This module aims to solidify your understanding of backend server frameworks using Node.js, enhancing your skills in:
 
-Neon is your go-to platform for accessing a robust, online SQL database service, offering a seamless and user-friendly interface to manage your databases.
+- Utilizing JavaScript libraries and frameworks for robust backend development    
+- Implementing HTTP REST endpoints for managing customers and products   
+- Developing backend logic to efficiently handle HTTP requests and manage database persistence   
+- Mastering both raw SQL and Sequelize ORM for effective database interactions   
+- Employing API testing tools to validate HTTP REST requests   
 
-1. **Getting Started with Neon:**
-   - Begin by navigating to [Neon's official website](https://neon.tech) and sign up for an account using your preferred method, such as Gmail or GitHub. This step is your entry point into the world of database management with Neon, providing you with access to a suite of powerful tools tailored for educational purposes.
+---
 
-2. **Initial Configuration:**
-   - Once logged in, take your first step by exploring the comprehensive [Neon documentation](https://neon.tech/docs/introduction), which will serve as a valuable resource throughout your learning journey.
-   - Create a new project named `bdv102` in Neon. This project will be the cornerstone of your hands-on exercises, allowing you to apply theoretical knowledge in a practical setting.
+### Next Steps in the Learning Journey
 
-3. **Navigating the Neon Dashboard:**
-   - Immerse yourself in the Neon dashboard, where you will find various sections like `SQL editor`, `Databases`, and `Tables`. This exploration will familiarize you with the tools and features you'll use to create and manage databases.
-   - Proceed to create a new database named `online-store`, which will be used in course exercises to simulate real-world database management scenarios.
+After solidifying the foundation in in this, you will progress to implementing the shopping cart and order functionalities in the backend as part of a capstone project during Modules 8 and 9. This will include:
 
-4. **Establishing Connections:**
-   - In the `dashboard`, under `connections`, you’ll find the connection parameters needed to connect your projects to Neon from JavaScript. These details, typically structured in a `.env` file format, are crucial for establishing a secure and reliable connection to your database.
-     ```plaintext
-     PGUSER=username
-     PGHOST=project-id.region.cloud.neon.tech
-     PGDATABASE=database-name
-     PGPASSWORD=password
-     PGPORT=5432
-     ```
-   - Carefully record these details, as they are the lifeline connecting your applications to the Neon database service.
+- Defining HTTP requests with JSON payloads for testing with a REST client.
+- Developing HTTP REST endpoints for carts and cart items.
+- Routing HTTP requests and managing data persistence in the backend.
+- Integrating raw SQL and Sequelize ORM for database operations from JavaScript.
 
-### Installing Visual Studio Code (VSCode)
+## Recommended Readings
 
-Visual Studio Code (VSCode) is a cutting-edge editor that offers an extensive array of features to support your development in JavaScript, TypeScript, and many other languages and frameworks.
+- For an in-depth understanding of Sequelize, refer to the [Sequelize Documentation](https://sequelize.org/docs/v6/getting-started/).
+- To learn more about REST, visit [What is REST](https://restfulapi.net).
 
-1. **Download and Installation Process:**
-   - Embark on your VSCode journey by visiting the [VSCode website](https://code.visualstudio.com) and downloading the installer suited to your operating system. This step marks the beginning of a transformative coding experience, providing you with a robust platform for code development, testing, and deployment.
-   - Follow the intuitive installation guide, which will lead you through a straightforward setup process, integrating this powerful tool into your development arsenal.
+---
 
-### Setting Up Docker Desktop
+### Learning Activities
+Building on the foundations laid in this module, you will transition to advanced backend functionalities in Modules 8 and 9, focusing on shopping cart and order processing. This progression includes:
 
-Docker Desktop is a pivotal tool in the modern developer's toolkit, facilitating the creation, testing, and deployment of applications in a containerized environment.
+- Crafting and testing HTTP requests with JSON payloads using REST clients.
+- Establishing robust HTTP REST endpoints for carts and cart items.
+- Refining backend routing and data persistence mechanisms.
+- Integrating advanced database operations using raw SQL and Sequelize ORM.
 
-1. **Getting Docker Desktop:**
-   - Access Docker Desktop by downloading it from [Docker’s official website](https://www.docker.com/products/docker-desktop/). This application is a gateway to leveraging the power of containerization, ensuring consistency and efficiency in your development workflow.
-   - For a deep dive into the capabilities and advantages of using dev containers, especially in conjunction with VSCode, explore the instructional video on [Container-Based Development with VSCode](https://www.youtube.com/watch?v=ftir5Dq7LoA). This resource will provide you with valuable insights and practical knowledge to enhance your development practices.
+### Tasks
 
-### DockerHub Account
+### Project Setup and Understanding
+Database Connectivity Verification:
+Confirm the established database connection from Module 6, ensuring seamless API development integration.
 
-Sign up for an account on [DockerHub](https://dockerhub.com).
-This will be used for managing Docker images and containers as part of the course.
+- Request Flow Comprehension:
+![Request flow](assets/request-flow.svg)   
+- Analyze the request flow diagram to understand backend request processing fully, highlighting the journey from entry points to database interactions.
 
-## Project Configuration and Workflow
+- Development and Implementation
+Express Server Configuration:
+Examine and configure the Express server setup in src/server.js, understanding the orchestration of HTTP request handling and route registration.
 
-Now that your environment is set up, you’re ready to commence the practical phase of your course.
+- RESTful Routing and Logic Development:
+Review and develop RESTful routes, ensuring a thorough understanding of HTTP methods integration and backend logic encapsulation in src/routes and src/controllers.
 
-1. **Cloning and Setting Up the Repository:**
-   - Begin by cloning the course repository to your local machine, a crucial step that brings the course's theoretical and practical elements to your fingertips. Open the repository in VSCode, and select `Open Workspace from File`, opting to reopen it in a container. This action sets the stage for a streamlined and integrated development experience, tailored to your educational needs.
+- API Endpoint Definition:
+Utilize the existing SQL schema to define and implement HTTP API endpoints, facilitating effective CRUD operations.
 
-2. **Course Navigation and Learning:**
-   - The course is organized into modules, each represented by a git branch. This structure allows you to systematically approach the learning material, starting with the basics and gradually advancing to more complex topics.
-   - To initiate your learning in each module, switch to the relevant branch and follow the guidelines in `README.md`. This document is your roadmap through the module, containing step-by-step instructions, exercises, and essential information to guide
+### Tasks Checklist:
+- [ ] Set up the Neon project and configure the database as outlined.
+- [ ] Update the database connection settings in JavaScript.
+- [ ] Review the request flow and examine the source code of routers, controllers, and models.
+- [ ] Run manual tests with the REST client to send REST request and trigget, deletion, and data population.
+
+```
+├── package.json
+├── src
+│   ├── api
+│   ├── config
+│   │   └── config.env
+│   ├── controllers
+│   │   ├── raw_sql
+│   │   └── orm
+│   ├── models
+│   ├── routes
+│   ├── server.js
+│   └── sql
+└── test
+    └── database.test.js
+```
