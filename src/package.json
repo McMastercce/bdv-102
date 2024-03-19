@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Sample backend starter project",
+  "scripts": {
+    "test": "jest",
+    "test:drop-database": "jest database.test.js -t 'drop database should succeed'",
+    "test:create-database": "jest database.test.js -t 'create database should succeed'",
+    "test:import-customers": "jest database.test.js -t 'should susessfully import customer dataset'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "path": "^0.12.7",
+    "pg": "^8.8.0",
+    "sequelize": "^6.25.3"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+  }
+}

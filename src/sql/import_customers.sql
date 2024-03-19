@@ -1,0 +1,28 @@
+
+-- Import dataset of 25 customers for the customer table
+INSERT INTO customers (first_name, last_name, email, street_address, province, country, postal_code) VALUES
+('Jesus', 'Gibson', 'jesus.gibson@example.com', '5823 Jermaine Mills', 'New Brunswick', 'Canada', 'E3S 4T6'),
+('Jeffrey', 'Morales', 'jeffrey.morales@example.com', '7012 Cook Prairie', 'Alberta', 'Canada', 'A6J5J7'),
+('Michael', 'Brady', 'michael.brady@example.com', '522 Aaron Island Apt. 371', 'Nunavut', 'Canada', 'S1M 8N9'),
+('John', 'Jones', 'john.jones@example.com', '660 Browning Mall Apt. 094', 'British Columbia', 'Canada', 'T3V 6B8'),
+('Christopher', 'Archer', 'christopher.archer@example.com', '02170 Reid Well Suite 917', 'Newfoundland', 'Canada', 'G2T 4N5'),
+('Julie', 'Scott', 'julie.scott@example.com', '873 Morgan Locks Suite 417', 'Nova Scotia', 'Canada', 'P1S7C9'),
+('Briana', 'Mercer', 'briana.mercer@example.com', '0695 Michele Estates', 'Saskatchewan', 'Canada', 'P9B 5S3'),
+('Natalie', 'Sweeney', 'natalie.sweeney@example.com', '03562 Thompson Parks', 'Saskatchewan', 'Canada', 'E9J7B7'),
+('Marc', 'Hall', 'marc.hall@example.com', '6530 Blevins Wells Apt. 937', 'Saskatchewan', 'Canada', 'V2E2E3'),
+('Kelly', 'Pineda', 'kelly.pineda@example.com', '101 Clements Keys Apt. 732', 'Yukon Territory', 'Canada', 'A4J1X5'),
+('Anthony', 'Nichols', 'anthony.nichols@example.com', '3818 Denise Ways', 'Nunavut', 'Canada', 'T8P2Y7'),
+('Jennifer', 'Kramer', 'jennifer.kramer@example.com', '53433 Christian Extension', 'New Brunswick', 'Canada', 'N6J 7S8'),
+('Jill', 'Welch', 'jill.welch@example.com', '267 Matthew Unions', 'Alberta', 'Canada', 'E8Y5N8'),
+('John', 'Tanner', 'john.tanner@example.com', '566 Ryan Trail', 'Nova Scotia', 'Canada', 'X3C8B8'),
+('Jon', 'Edwards', 'jon.edwards@example.com', '2968 Rogers Squares', 'Northwest Territories', 'Canada', 'H7R4S4'),
+('Alyssa', 'Garza', 'alyssa.garza@example.com', '7717 Angela Hollow Apt. 249', 'Northwest Territories', 'Canada', 'C3N3M9'),
+('Audrey', 'Cohen', 'audrey.cohen@example.com', '680 Angela Shoals Apt. 958', 'Quebec', 'Canada', 'C3Y2X1'),
+('Mark', 'Mendez', 'mark.mendez@example.com', '456 Welch Road', 'Nunavut', 'Canada', 'B2G 6X8'),
+('Jeffrey', 'Riley', 'jeffrey.riley@example.com', '7556 Melissa Ridge', 'Northwest Territories', 'Canada', 'C5R 3P6'),
+('Jennifer', 'Fernandez', 'jennifer.fernandez@example.com', '60233 Hill Glen Suite 806', 'British Columbia', 'Canada', 'A6L 3N5'),
+('Brenda', 'Duarte', 'brenda.duarte@example.com', '98227 Cook Wall Suite 718', 'Ontario', 'Canada', 'S4V4X6'),
+('Mary', 'Mack', 'mary.mack@example.com', '90107 Michael Radial Suite 123', 'Newfoundland and Labrador', 'Canada', 'E7E 6T8'),
+('Alan', 'Rodriguez', 'alan.rodriguez@example.com', '2445 Garner Trail', 'Alberta', 'Canada', 'N1T 9H1'),
+('Andrew', 'Bernard', 'andrew.bernard@example.com', '7731 Allison Ports Apt. 954', 'British Columbia', 'Canada', 'P6T4C1'),
+('Dwayne', 'Hancock', 'dwayne.hancock@example.com', '839 Lopez Valleys Apt. 372', 'Newfoundland', 'Canada', 'H5N 1N1');

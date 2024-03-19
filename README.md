@@ -1,64 +1,102 @@
-# BDV 102: Interactivity and Databases
-This is a code repository in the course BVD 102 at McMaster Continuing Education.
+# Module 6
 
-## Essential Tools Setup
+In this module, we will explore backend development using JavaScript and SQL, focusing on constructing the backend for a hypothetical online store. You'll work with a detailed SQL schema that forms the backbone of an e-commerce system. The file [online-store.md](./online-store.md) outlines the proposal for the online store and its schema, encompassing:
 
-To embark on this educational journey, you’ll need to set up an online SQL database environment and install some fundamental software that will be the backbone of your learning experience.
+- Customers
+- Product types
+- Products
+- Carts
+- Cart items
+- Orders
+- Order items
 
-### Online SQL Database Setup with Neon
+![E-store ERD](./assets/e-store-erd.svg)
 
-Neon is your go-to platform for accessing a robust, online SQL database service, offering a seamless and user-friendly interface to manage your databases.
+Modules 6 and 7 will guide you in setting up a backend server framework using Node.js. You will:
 
-1. **Getting Started with Neon:**
-   - Begin by navigating to [Neon's official website](https://neon.tech) and sign up for an account using your preferred method, such as Gmail or GitHub. This step is your entry point into the world of database management with Neon, providing you with access to a suite of powerful tools tailored for educational purposes.
+- Practice using JavaScript for Test-Driven Development (TDD).
+- Implement HTTP REST endpoints for customers and products.
+- Develop backend logic to handle HTTP requests and persist data in the database.
+- Learn to use both raw SQL and the Sequelize ORM for database interactions from JavaScript.
+- Utilize an API test tool to execute HTTP REST requests.
 
-2. **Initial Configuration:**
-   - Once logged in, take your first step by exploring the comprehensive [Neon documentation](https://neon.tech/docs/introduction), which will serve as a valuable resource throughout your learning journey.
-   - Create a new project named `bdv102` in Neon. This project will be the cornerstone of your hands-on exercises, allowing you to apply theoretical knowledge in a practical setting.
+---
 
-3. **Navigating the Neon Dashboard:**
-   - Immerse yourself in the Neon dashboard, where you will find various sections like `SQL editor`, `Databases`, and `Tables`. This exploration will familiarize you with the tools and features you'll use to create and manage databases.
-   - Proceed to create a new database named `online-store`, which will be used in course exercises to simulate real-world database management scenarios.
+### Next Steps in the Learning Journey
 
-4. **Establishing Connections:**
-   - In the `dashboard`, under `connections`, you’ll find the connection parameters needed to connect your projects to Neon from JavaScript. These details, typically structured in a `.env` file format, are crucial for establishing a secure and reliable connection to your database.
-     ```plaintext
-     PGUSER=username
-     PGHOST=project-id.region.cloud.neon.tech
-     PGDATABASE=database-name
-     PGPASSWORD=password
-     PGPORT=5432
+After solidifying the foundation in Modules 6 and 7, you will progress to implementing the shopping cart and order functionalities in the backend as part of a capstone project during Modules 8 and 9. This will include:
+
+- Defining HTTP requests with JSON payloads for testing with a REST client.
+- Developing HTTP REST endpoints for carts and cart items.
+- Routing HTTP requests and managing data persistence in the backend.
+- Integrating raw SQL and Sequelize ORM for database operations from JavaScript.
+
+## Recommended Readings
+
+- For an in-depth understanding of Sequelize, refer to the [Sequelize Documentation](https://sequelize.org/docs/v6/getting-started/).
+- To learn more about REST, visit [What is REST](https://restfulapi.net).
+
+---
+
+### Learning Activities
+
+1. **Initialize the Online Store Project**
+   - Follow the setup instructions in [neon.md](neon.md) to prepare Neon for your development environment.
+   - Ensure the `online-store` database is configured in your Neon setup.
+
+2. **Configure Database Credentials**
+   - Go to `src/config/config.env` in your project folder.
+   - Update the environment variables with your Neon database credentials as follows:
      ```
-   - Carefully record these details, as they are the lifeline connecting your applications to the Neon database service.
+     PGHOST='your-neon-host'
+     PGUSER='your-username'
+     PGPASSWORD='your-password'
+     PGDATABASE='online-store'
+     DATABASE_USE_SSL=true
+     ```
 
-### Installing Visual Studio Code (VSCode)
+### Database Schema and Data Management
 
-Visual Studio Code (VSCode) is a cutting-edge editor that offers an extensive array of features to support your development in JavaScript, TypeScript, and many other languages and frameworks.
+3. **Prepare the SQL Schema**
+   - Examine the SQL files in `src/sql` to familiarize yourself with the schema and initial data of the fictitious online store.
+   - These files contain queries for table creation and customer data importation.
 
-1. **Download and Installation Process:**
-   - Embark on your VSCode journey by visiting the [VSCode website](https://code.visualstudio.com) and downloading the installer suited to your operating system. This step marks the beginning of a transformative coding experience, providing you with a robust platform for code development, testing, and deployment.
-   - Follow the intuitive installation guide, which will lead you through a straightforward setup process, integrating this powerful tool into your development arsenal.
+### Testing Database Operations
 
-### Setting Up Docker Desktop
+4. **Review and Execute Test Scripts**
+   - In `package.json`, find the test scripts under the `scripts` section.
+   - Execute the following commands to ensure successful operation:
+     - `npm run test:drop-database` drops the existing database.
+     - `npm run test:create-database` creates a new database.
+     - `npm run test:import-customers` imports customer data.
 
-Docker Desktop is a pivotal tool in the modern developer's toolkit, facilitating the creation, testing, and deployment of applications in a containerized environment.
+5. **Inspect Data in Neon UI**
+   - After test execution, use the Neon dashboard to inspect the `customers` table.
+   - Verify the table's existence, record count, and data accuracy, ensuring that the tests have correctly interacted with the database.
 
-1. **Getting Docker Desktop:**
-   - Access Docker Desktop by downloading it from [Docker’s official website](https://www.docker.com/products/docker-desktop/). This application is a gateway to leveraging the power of containerization, ensuring consistency and efficiency in your development workflow.
-   - For a deep dive into the capabilities and advantages of using dev containers, especially in conjunction with VSCode, explore the instructional video on [Container-Based Development with VSCode](https://www.youtube.com/watch?v=ftir5Dq7LoA). This resource will provide you with valuable insights and practical knowledge to enhance your development practices.
+6. **Implement and Debug Tests**
+   - Run `npm test database.test.js` to execute all tests in `database.test.js`.
+   - Address and fix any failing tests, focusing on customer-related operations such as count, update, find, and delete, using both raw SQL and Sequelize ORM.
 
-### DockerHub Account
+### Tasks Checklist
 
-Sign up for an account on [DockerHub](https://dockerhub.com).
-This will be used for managing Docker images and containers as part of the course.
+- [ ] Set up the Neon project and configure the database as outlined.
+- [ ] Update the database connection settings in JavaScript.
+- [ ] Review the SQL schema and prepare the database.
+- [ ] Run tests to manage the database creation, deletion, and data population.
+- [ ] Fix and implement tests for customer-related database operations.
 
-## Project Configuration and Workflow
+### Project File Structure
 
-Now that your environment is set up, you’re ready to commence the practical phase of your course.
+Your project should include the following key directories and files:
 
-1. **Cloning and Setting Up the Repository:**
-   - Begin by cloning the course repository to your local machine, a crucial step that brings the course's theoretical and practical elements to your fingertips. Open the repository in VSCode, and select `Open Workspace from File`, opting to reopen it in a container. This action sets the stage for a streamlined and integrated development experience, tailored to your educational needs.
-
-2. **Course Navigation and Learning:**
-   - The course is organized into modules, each represented by a git branch. This structure allows you to systematically approach the learning material, starting with the basics and gradually advancing to more complex topics.
-   - To initiate your learning in each module, switch to the relevant branch and follow the guidelines in `README.md`. This document is your roadmap through the module, containing step-by-step instructions, exercises, and essential information to guide
+```
+.
+├── package.json
+├── src
+│   ├── config
+│   │   └── config.env
+│   ├── test
+│   │   └── database.test.js
+│   └── sql
+```
