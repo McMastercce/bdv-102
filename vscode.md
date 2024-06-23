@@ -1,15 +1,15 @@
-# VScode Configuration File
+# VScode Debug Configuration
 
 Create a directory .vscode the root directory of the project and create a file launch.json with this content
 
 
-```
+```json
 {
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/src/index.js",
+      "name": "Debug Server.js",
+      "program": "${workspaceFolder}/src/server.js",
       "request": "launch",
       "skipFiles": [
         "<node_internals>/**"
@@ -33,3 +33,4 @@ Create a directory .vscode the root directory of the project and create a file l
   ]
 }
 ```
+
