@@ -594,3 +594,125 @@ With the debug configuration in place, you can select the debug view in the left
 You can now send the Http requests in the rest client and see the response. The request is handled by your server and data is fetched from the database.
 ![Sending Rest](./assets/rest.png)
 
+
+# Refactor application in routes and controllers
+The initial server includes logic to handle http API and interaction with the database in one single file "server.js". This is not a good practice. We will refactor the application to separate the logic into two files.
+
+## Create controllers
+
+1. Create a directory "src/controllers" with the following file "userController.js" and content.
+```
+const pool = require('../db.js');
+
+
+// Create a new user
+exports.createUser = async (req, res) => {
+  const { email, first_name, last_name, street_address, city, province, postal_code, country } = req.body;
+  try {
+    const newUser = await pool.query(
+      'INSERT INTO users (email, first_name, last_name, street_address, city, province, postal_code, country) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      [email, first_name, last_name, street_address, city, province, postal_code, country]
+    );
+    res.json(newUser.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+// Get a user by email
+exports.getUserByEmail = async (req, res) => {
+  const { email } = req.params;
+  try {
+    const user = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    res.json(user.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+// Update a user by email
+exports.updateUserByEmail = async (req, res) => {
+  const { email } = req.params;
+  const { first_name, last_name, street_address, city, province, postal_code, country } = req.body;
+  try {
+    const updatedUser = await pool.query(
+      'UPDATE users SET first_name = $1, last_name = $2, street_address = $3, city = $4, province = $5, postal_code = $6, country = $7 WHERE email = $8 RETURNING *',
+      [first_name, last_name, street_address, city, province, postal_code, country, email]
+    );
+    res.json(updatedUser.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+// Delete a user by email
+exports.deleteUserByEmail = async (req, res) => {
+  const { email } = req.params;
+  try {
+    await pool.query('DELETE FROM users WHERE email = $1', [email]);
+    res.json({ message: 'User deleted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+
+// List all users
+exports.listUsers = async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM users');
+    const users = result.rows;
+    res.json(users);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+};
+```
+
+## Create Routes
+1. Create a directory "src/routes" with the following file "userRoutes.js" and content.
+
+```
+const express = require('express');
+const router = express.Router();
+const {
+  createUser,
+  getUserByEmail,
+  updateUserByEmail,
+  deleteUserByEmail,
+  listUsers
+} = require('../controllers/userController');
+
+router.post('/users', createUser);
+router.get('/users/:email', getUserByEmail);
+router.put('/users/:email', updateUserByEmail);
+router.delete('/users/:email', deleteUserByEmail);
+router.get('/users', listUsers);
+
+module.exports = router;
+```
+
+
+## Update server.js to use the userRoutes
+
+The server.js can be updated to use the userRoutes module. With this refactor the server.js file will be cleaner and easier to maintain.
+
+```
+const express = require('express');
+const userRoutes = require('./routes/userRoutes');
+const pool = require('./db.js')
+
+const app = express();
+app.use(express.json());
+
+// Configure user routes
+app.use('/', userRoutes);
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+```
